@@ -1,25 +1,23 @@
+from Game import Actor
 
-class Character():
-    pass
-#
 class GameController():
-    
-    charList: set[Character]
-    initiatives: dict[Character: int]
+    # List of characters, to be sorted in initiative order
+    actorList: list[Actor]
 
     def __init__(self) -> None:
-        self.charList = []
+        self.actorList = []
     
-    # Add a character to the fight.
-    def addCharacter(self, newChar: Character):
-        self.charList.append(Character)
+    # Add a character to the fight
+    def addCharacter(self, newActor: Actor):
+        self.actorList.append(newActor)
 
     # Start the simulation.
     def run(self) -> None:
-        roundNum = 1
-        initiatives = self.rollInitiatives()
-        #TODO: Roll initiative
+        # Get each actor's initiative, then use the result to sort actorList
+        self.rollInitiatives()
+        
 
+        roundNum = 1
         while (True):
             #Cycle through each character's turn
             
@@ -28,10 +26,10 @@ class GameController():
             if (roundNum > 10):
                 break
 
-    def rollInitiatives(self) -> dict[Character: int]:
-        # For each character 'actor', get their initiative value
-        # and save it to initiatives['actor']
+    def rollInitiatives(self) -> None:
+        # For each actor, get their initiative value
+        # Sort charlist by each actors initiative.
+        return
+    
 
-        #Returns a sorted list of 
-        return 
     
