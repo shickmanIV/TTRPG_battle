@@ -20,16 +20,16 @@ class ProficiencyType(Enum):
     VEHICLES = 8
 
 class Allignment(Enum):
-    UA, UNALIGNED, NONE = 0
-    LG, LAWFULGOOD = 1
-    LN, LAWFULNEUTRAL = 2
-    LE, LAWFULEVIL = 3
-    NG, NEUTRALGOOD = 4
-    N, NN, NEUTRAL, TRUENEUTRAL = 5
-    NE, NEUTRALEVIL = 6
-    CG, CHAOTICGOOD = 7
-    CN, CHAOTICNEUTRAL = 8
-    CE, CHAOTICEVIL = 9
+    UA = 0
+    LG = 1
+    LN = 2
+    LE = 3
+    NG = 4
+    N = 5
+    NE = 6
+    CG = 7
+    CN = 8
+    CE = 9
 
 
     
