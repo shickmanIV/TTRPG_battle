@@ -1,6 +1,6 @@
 from Classes import Class, AbilityType
 from Spells import spell
-import requests
+from Game import Actor
 
 def getPaths1():
     url = "https://www.dnd5eapi.co"
@@ -141,5 +141,7 @@ def get_core_classes():
 
     print(result)
     
-tet = Class({})
-print(tet)
+
+if __name__ == "__main__":
+    baseActor = Actor()
+    print(baseActor)

@@ -7,8 +7,8 @@ class Condition():
         self.name = name
         self.desc = desc
         self.effects = effects or []
-
-    # Adds an effect by passing a lambda expression to the 
+    
+    # Adds an effect by passing a lambda expression to this condition
     def addEffect(self, newEffect=None):
         self.effects.append(newEffect)
 
