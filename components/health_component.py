@@ -5,9 +5,9 @@ class HealthComponent(Component):
     def __init__(self, max_hp):
         self.current_hp = max_hp
         self.max_hp = max_hp
-        self.temporary_hp = 0
+        self.temp_hp = 0
 
     def print_attributes(self, indent=""):
         print(indent + "current_hp:", self.current_hp)
         print(indent + "max_hp:", self.max_hp)
-        print(indent + "temporary_hp:", self.temporary_hp)
+        print(indent + "temp_hp:", self.temp_hp)
