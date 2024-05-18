@@ -15,6 +15,7 @@ class Entity:
         return component_type in self.components
     
     #
-    def print_components(self):
-        for component in self.components:
-            print(component.__class__.__name__, "\t", component.__dict__)
+    def print_components(self, indent=""):
+        for type, component in self.components.items():
+            print(indent + type.__name__)
+            component.print_attributes(indent + "    ")
