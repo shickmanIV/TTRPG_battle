@@ -1,3 +1,4 @@
+
 class Entity:
     # In future, possibly initialize with set of components
     def __init__(self, entity_id):
@@ -12,3 +13,8 @@ class Entity:
 
     def has_component(self, component_type):
         return component_type in self.components
+    
+    #
+    def print_components(self):
+        for component in self.components:
+            print(component.__class__.__name__, "\t", component.__dict__)
