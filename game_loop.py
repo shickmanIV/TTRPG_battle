@@ -7,7 +7,8 @@ import logging # Run with "--log=INFO"
 class GameLoop:
     def __init__(self):
         self.entity_manager = EntityManager()
-        self.health_system = HealthSystem()
+        self.systems = []
+        self.systems.append(HealthSystem())
         self.renderer = Renderer()
         self.user_input = UserInput()
 
@@ -24,11 +25,13 @@ class GameLoop:
     def display_all_entities(self):
         self.entity_manager.print_all_entities()
 
+    # Get user inputs, then execute the corresponding commands.
     def process_input(self):
-        pass #self.user_input.get_input()
-
+        self.user_input.get_input()
+        
     def update(self):
-        self.health_system.update(self.entity_manager)
+        for system in self.systems:
+            system.update(self.entity_manager)
 
     def render(self):
         pass #self.renderer.render(self.entity_manager)

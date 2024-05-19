@@ -1,2 +1,3 @@
 class UserInput():
-    pass
+    def get_input():
+        pass
