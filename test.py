@@ -46,5 +46,5 @@ def test3():
     ed.add_component(HealthComponent(12))
     ed.add_component(BioComponent("Bob"))
     
-    game.entity_manager.print_all_entities()
+    game.display_all_entities()
     game.run()
