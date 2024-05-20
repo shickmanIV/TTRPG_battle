@@ -3,6 +3,7 @@ from components.health_component import HealthComponent
 from components.bio_component import BioComponent
 from presets.characters import grog
 
+# Experiments with different ways to access entity attributes
 def test():
     game = GameLoop()
     ed = game.entity_manager.create_entity('bob')
@@ -16,6 +17,7 @@ def test():
     print("________________________________________________")
     print()
 
+# Experiments with how to print entity and component info legibly
 def test2():
     game = GameLoop()
     ed = game.entity_manager.create_entity('bob')
@@ -33,7 +35,8 @@ def test2():
             print("\tcomponent.__name__:", component.__name__)
             #print("\tcomponent.current_health:", component.current_health)
             print("\tcomponent.__dict__", component.__dict__)
-                     
+
+# Creates some basic entities, then prints all info known about them.               
 def test3():
     game = GameLoop()
     ed = game.entity_manager.create_entity('bob')
@@ -44,3 +47,4 @@ def test3():
     ed.add_component(BioComponent("Bob"))
     
     game.entity_manager.print_all_entities()
+    game.run()
