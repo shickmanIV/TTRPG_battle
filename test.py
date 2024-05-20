@@ -1,8 +1,7 @@
 from game_loop import GameLoop
 from components.health_component import HealthComponent
-from components.bio_component import BioComponent
 from entities.entity import Entity
-#from presets.characters import grog
+from entities.actor import Actor
 import presets.characters
 
 # Experiments with different ways to access entity attributes
@@ -41,10 +40,7 @@ def test2():
 # Creates some basic entities, then prints all info known about them.               
 def test3():
     game = GameLoop()
+    bob = Actor('bob', "Bob", 12)
     grog = presets.characters.grog()
-    bob = Entity('bob')
-    bob.add_component(HealthComponent(12))
-    bob.add_component(BioComponent("Bob"))
-    
     game.display_all_entities()
     game.run()
