@@ -1,6 +1,7 @@
 from game_loop import GameLoop
 from components.health_component import HealthComponent
 from components.bio_component import BioComponent
+from presets.characters import grog
 
 def test():
     game = GameLoop()
@@ -36,6 +37,7 @@ def test2():
 def test3():
     game = GameLoop()
     ed = game.entity_manager.create_entity('bob')
+    gr = grog(game.entity_manager)
     
     # same as: game.entity_manager.get_entity('bob').add_component(HealthComponent(12)) 
     ed.add_component(HealthComponent(12))
