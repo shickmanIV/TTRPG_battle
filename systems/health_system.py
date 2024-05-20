@@ -2,7 +2,6 @@ from systems.system import System
 from components.health_component import HealthComponent
 import logging # Run with "--log=INFO"
 
-# Really just an example for reference
 class HealthSystem(System):
     def __init__(self):
         self.logger = logging.getLogger(__name__)

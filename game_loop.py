@@ -1,4 +1,4 @@
-from entities.entity_manager import EntityManager
+from entities.entity import Entity
 from systems.health_system import HealthSystem
 from ui.renderer import Renderer
 from ui.user_input import UserInput
@@ -6,7 +6,7 @@ import logging # Run with "--log=INFO"
 
 class GameLoop:
     def __init__(self):
-        self.entity_manager = EntityManager()
+        self.entity_manager = Entity.entity_manager
         self.systems = []
         self.systems.append(HealthSystem())
         self.renderer = Renderer()
@@ -27,7 +27,8 @@ class GameLoop:
 
     # Get user inputs, then execute the corresponding commands.
     def process_input(self):
-        self.user_input.get_input()
+        #self.user_input.get_input()
+        pass
         
     def update(self):
         for system in self.systems:
