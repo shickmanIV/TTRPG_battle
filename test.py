@@ -40,7 +40,7 @@ def test2():
 # Creates some basic entities, then prints all info known about them.               
 def test3():
     game = GameLoop()
-    bob = Actor('bob', "Bob", 12)
+    bob = Actor(entity_id='bob', name="Bob", max_hp=12)
     grog = presets.characters.grog()
     game.display_all_entities()
     game.run()
