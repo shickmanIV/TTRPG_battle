@@ -4,6 +4,11 @@ from entities.entity import Entity
 from entities.actor import Actor
 import presets.characters
 
+# For world_test()
+from world import World
+from systems.input_system import InputSystem
+from systems.battle_system import BattleSystem
+
 # Experiments with different ways to access entity attributes
 def test():
     game = GameLoop()
@@ -42,5 +47,12 @@ def test3():
     game = GameLoop()
     bob = Actor('bob', name="Bob", max_hp=12)
     grog = presets.characters.grog()
+    game.display_all_entities()
+    game.run()
+
+def world_test():
+    game = GameLoop()
+    bob = game.world.add_entity(Actor('bob', name="Bob", max_hp=12))
+    grog = game.world.add_entity(presets.characters.grog())
     game.display_all_entities()
     game.run()

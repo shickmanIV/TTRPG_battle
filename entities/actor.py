@@ -1,16 +1,16 @@
 from entities.entity import Entity
 from components.health_component import HealthComponent
+from components.ability_score_component import AbilityScores
 
 # A subclass of Entity representing an actor in the combat simulation
 class Actor(Entity):
-    #def __init__(self, entity_id, name="", max_hp=1):
     def __init__(self, entity_id, **args):
         super().__init__(entity_id)
-        if (args.get('max_hp')):
-            self.add_component(HealthComponent(args['max_hp']))
+
+        self.add_component(HealthComponent(args.get('max_hp', 1)))
+        self.add_component(AbilityScores(**args))
 
         self.character_name = args.get('character_name')
-
         self.character_class = args.get('character_class')
         self.level = args.get('level') or 1
         self.background = args.get('background')

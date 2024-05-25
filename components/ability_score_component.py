@@ -14,6 +14,10 @@ class AbilityScores(Component):
         value = self.scores.get(abilitytype)
         return int((value - 10) / 2)
     
+    def bonus(self, key: str) -> int:
+        value = self.scores[key]
+        return int((value - 10) / 2)
+    
     def print_attributes(self, indent=""):
         for key, value in self.scores.items():
             bonus = self.bonus(key)

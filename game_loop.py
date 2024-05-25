@@ -4,38 +4,35 @@ from ui.renderer import Renderer
 from ui.user_input import UserInput
 import logging # Run with "--log=INFO"
 
+from world import World
+from systems.input_system import InputSystem
+from systems.battle_system import BattleSystem
+
 class GameLoop:
     def __init__(self):
-        self.entity_manager = Entity.entity_manager
-        self.systems = []
-        self.systems.append(HealthSystem())
+        self.world = World()
+        self.input_system = self.world.add_system(InputSystem())
+        self.world.add_system(BattleSystem())
+        self.world.add_system(HealthSystem())
         self.renderer = Renderer()
-        self.user_input = UserInput()
 
     def run(self):
         loops = 0
         while True:
-            self.process_input()
-            self.update()
-            self.render()
-            loops += 1
-            if loops > 50:
+            # Placeholder for getting user_input
+            user_input = input("Enter your command (ATTACK, DEFEND): ")
+            if user_input == "QUIT" or loops > 10:
                 break
+            self.input_system.capture_input(user_input)
+            self.input_system.process_input(self.world)
+            self.world.update()
+            loops += 1
 
     def display_all_entities(self):
-        self.entity_manager.print_all_entities()
+        self.world.print_all_entities()
 
-    # Get user inputs, then execute the corresponding commands.
-    def process_input(self):
-        #self.user_input.get_input()
-        pass
-        
-    def update(self):
-        for system in self.systems:
-            system.update(self.entity_manager)
-
-    def render(self):
-        pass #self.renderer.render(self.entity_manager)
+#    def render(self):
+#        pass #self.renderer.render(self.entity_manager)
 
 # For debugging
 if __name__ == "__main__":
