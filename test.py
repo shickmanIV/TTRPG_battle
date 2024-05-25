@@ -55,4 +55,4 @@ def world_test():
     bob = game.world.add_entity(Actor('bob', name="Bob", max_hp=12))
     grog = game.world.add_entity(presets.characters.grog())
     game.display_all_entities()
-    game.run()
+    #game.run()
