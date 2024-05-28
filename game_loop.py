@@ -11,7 +11,8 @@ from systems.battle_system import BattleSystem
 class GameLoop:
     def __init__(self):
         self.world = World()
-        self.input_system = self.world.add_system(InputSystem())
+        # Input is kept separate from the game world
+        self.input_system = InputSystem()
         self.world.add_system(BattleSystem())
         self.world.add_system(HealthSystem())
         self.renderer = Renderer()
@@ -23,6 +24,7 @@ class GameLoop:
             user_input = input("Enter your command (ATTACK, DEFEND): ")
             if user_input == "QUIT" or loops > 10:
                 break
+            
             self.input_system.capture_input(user_input)
             self.input_system.process_input(self.world)
             self.world.update()
@@ -31,8 +33,8 @@ class GameLoop:
     def display_all_entities(self):
         self.world.print_all_entities()
 
-#    def render(self):
-#        pass #self.renderer.render(self.entity_manager)
+    def render(self):
+        pass #self.renderer.render(self.entity_manager)
 
 # For debugging
 if __name__ == "__main__":
