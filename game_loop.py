@@ -13,8 +13,8 @@ class GameLoop:
         self.world = World()
         # Input is kept separate from the game world
         self.input_system = InputSystem()
-        self.world.add_system(BattleSystem())
-        self.world.add_system(HealthSystem())
+        self.world.add_system(BattleSystem(), priority=1)  # Higher priority
+        self.world.add_system(HealthSystem(), priority=2)
         self.renderer = Renderer()
 
     def run(self):
@@ -24,7 +24,7 @@ class GameLoop:
             user_input = input("Enter your command (ATTACK, DEFEND): ")
             if user_input == "QUIT" or loops > 10:
                 break
-            
+
             self.input_system.capture_input(user_input)
             self.input_system.process_input(self.world)
             self.world.update()
@@ -33,6 +33,7 @@ class GameLoop:
     def display_all_entities(self):
         self.world.print_all_entities()
 
+    # TODO: Implement rendering
     def render(self):
         pass #self.renderer.render(self.entity_manager)
 
