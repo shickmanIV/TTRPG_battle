@@ -1,21 +1,20 @@
 from systems.system import System
-from systems.battle_system import BattleSystem
+from event import Event
 
-# Not technically a system, 
-class InputSystem():
-    def __init__(self):
-        self.commands = []
+class InputSystem(System):
+    def __init__(self, event_bus):
+        self.event_bus = event_bus
 
     def capture_input(self, user_input):
-        self.commands.append(user_input)
+        event_type = self.translate_input_to_event(user_input)
+        event = Event(event_type)
+        self.event_bus.publish(event)
 
-    def process_input(self, world):
-        for command in self.commands:
-            self.execute_command(command, world)
-        self.commands.clear()
+    def translate_input_to_event(self, user_input):
+        # Translate the raw user_input into an event type
+        # For simplicity, we'll assume that the user_input is already a valid event type
+        return user_input
 
-    def execute_command(self, command, world):
-        if command == "ATTACK":
-            world.get_system(BattleSystem).queue_action("attack")
-        elif command == "DEFEND":
-            world.get_system(BattleSystem).queue_action("defend")
+    def update(self, world):
+        # This system doesn't need to do anything on update
+        pass
