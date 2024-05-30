@@ -2,7 +2,7 @@ from game_loop import GameLoop
 from components.health_component import HealthComponent
 from entities.entity import Entity
 from entities.actor import Actor
-import presets.characters
+import entities.presets.characters
 
 # For world_test()
 from world import World
