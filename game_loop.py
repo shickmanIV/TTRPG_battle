@@ -1,6 +1,7 @@
 from world import World
 from systems.input_system import InputSystem
 from systems.battle_system import BattleSystem
+from systems.health_system import HealthSystem
 from event_bus import EventBus
 
 class GameLoop:
@@ -8,7 +9,8 @@ class GameLoop:
         self.event_bus = EventBus()
         self.world = World()
         self.input_system = InputSystem(self.event_bus)
-        self.world.add_system(self.input_system, priority=1)
+        self.world.add_system(self.input_system, priority=0)
+        self.world.add_system(HealthSystem(self.event_bus), priority=2)
         self.world.add_system(BattleSystem(self.event_bus), priority=2)
 
     def run(self):
