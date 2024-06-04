@@ -13,7 +13,7 @@ class CharacterCreatorSystem:
         self.event_bus.publish("entity_created", actor)
         return actor
     
-    def create_character_from_preset(self, preset_name=''):
+    def create_character_from_preset(self, preset_name: str):
         # Get a list of all non private/special functions in the characters module
         public_functions = [f for f in dir(characters) if not f.startswith('_')]
         # Print the list of functions for the user to choose from
