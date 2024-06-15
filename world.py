@@ -51,7 +51,7 @@ class World(EntityManager):
         Returns:
             The system object of the specified type, or None if not found.
         """
-        for _, system in self.__systems:
+        for _, _, system in self.__systems:
             if isinstance(system, system_type):
                 return system
         return None
