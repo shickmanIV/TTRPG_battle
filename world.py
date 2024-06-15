@@ -9,6 +9,7 @@ class World(EntityManager):
 
     Attributes:
         __systems (list): A list of tuples representing the systems in the world, where each tuple contains a priority and a system object.
+        __counter (int): A counter for generating unique entity IDs.
 
     Methods:
         add_system(system, priority=0): Adds a system to the world with an optional priority.
@@ -20,8 +21,10 @@ class World(EntityManager):
         """
         Initializes a new instance of the World class.
         """
-        self.__systems = []
         super().__init__()
+        self.__systems = []
+        self.__counter = 0
+        
 
     def add_system(self, system, priority=0):
         """
@@ -34,7 +37,8 @@ class World(EntityManager):
         Returns:
             The added system object.
         """
-        heapq.heappush(self.__systems, (priority, system))
+        heapq.heappush(self.__systems, (priority, self.__counter, system))
+        self.__counter += 1  # Increment the counter each time a system is added
         return system
     
     def get_system(self, system_type):
@@ -56,5 +60,5 @@ class World(EntityManager):
         """
         Updates all systems in the world in order of their priority.
         """
-        for _, system in sorted(self.__systems):
+        for _, _, system in sorted(self.__systems):
             system.update(self)
